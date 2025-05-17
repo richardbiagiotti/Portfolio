@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog – Richard Biagiotti</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --bg: #f4f4f4;
+      --text: #333;
+      --hero-bg: #222;
+      --hero-text: #fff;
+      --section-bg: #fff;
+    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background: var(--bg); color: var(--text); }
+    .navbar { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--hero-bg); z-index: 100; }
+    .logo { color: var(--hero-text); font-size: 1.25rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--hero-text); text-decoration: none; }
+    .nav-links a.active { text-decoration: underline; }
+    section { padding: 4rem 2rem; background: var(--section-bg); scroll-margin-top: 4rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    article { margin-bottom: 2rem; }
+    article h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    article p { line-height: 1.6; margin-bottom: 0.5rem; }
+    article a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Richard Biagiotti</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="home.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="container" style="padding-top: 6rem;">
+    <h2>Blog</h2>
+
+    <article>
+      <h3>May 7, 2025 – Building My First Website</h3>
+      <p>Read more<p>
+      <a href="#">Read more →</a>
+    </article>
+
+    
+
+    <!-- Add more blog posts here -->
+  </section>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Games – Richard Biagiotti</title>
+
+  <!-- loosen CSP so the browser can fetch PyScript + Pyodide -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://pyscript.net;
+                 script-src  'self' https://pyscript.net 'unsafe-eval';
+                 style-src   'self' https://pyscript.net;
+                 worker-src  'self' https://pyscript.net;
+                 connect-src 'self' https://pyscript.net https://*.pypi.org;
+                 img-src     'self' data: blob:;
+                 frame-src   'self';" />
+
+  <!-- PyScript runtime (CSS + JS) -->
+  <link rel="stylesheet" href="https://pyscript.net/unstable/pyscript.css" />
+  <script defer src="https://pyscript.net/unstable/pyscript.js"></script>
+
+  <style>
+    body { margin:0; background:#000; color:#fff;
+           font-family:sans-serif; text-align:center }
+    h1   { margin:1.5rem 0 0.75rem }
+    p    { margin-bottom:1rem; color:#ccc }
+    canvas { border:2px solid #007bff; max-width:100%; height:auto }
+  </style>
+</head>
+<body>
+  <h1>Brick Breaker</h1>
+  <p>Use ← and → to move the paddle. It might take a while to load, I dont know how to fix it.</p>
+
+  <!-- PyScript config: pull in pygame‑ce from PyPI -->
+  <py-config>
+packages = ["pygame-ce"]
+  </py-config>
+
+  <!-- Your entire game lives right here -->
+  <script type="py">
+import os, asyncio, pygame
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
+
+async def main():
+    pygame.init()
+    WIDTH, HEIGHT = 800, 600
+    screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.SCALED)
+    pygame.display.set_caption("Brick Breaker – Richard Biagiotti")
+    clock = pygame.time.Clock()
+
+    BG = (30,30,30)
+    PADDLE = (200,200,200)
+    BALL = (255,100,100)
+    BRICK = (100,200,255)
+
+    paddle = pygame.Rect(WIDTH//2-60, HEIGHT-40, 120, 10)
+    paddle_speed = 7
+
+    ball = pygame.Rect(WIDTH//2-8, HEIGHT//2-8, 16, 16)
+    ball_vel = [5, -5]
+
+    bricks = []
+    rows, cols = 6, 10
+    bw, bh = WIDTH//cols, 20
+    for r in range(rows):
+        for c in range(cols):
+            bricks.append(pygame.Rect(c*bw+2, r*(bh+2)+50, bw-4, bh))
+
+    font = pygame.font.Font(None, 36)
+    running = True
+    while running:
+        for e in pygame.event.get():
+            if e.type == pygame.QUIT:
+                running = False
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]  and paddle.left  > 0:       paddle.x -= paddle_speed
+        if keys[pygame.K_RIGHT] and paddle.right < WIDTH:   paddle.x += paddle_speed
+
+        ball.x += ball_vel[0]; ball.y += ball_vel[1]
+        if ball.left<=0 or ball.right>=WIDTH: ball_vel[0]*=-1
+        if ball.top<=0:                        ball_vel[1]*=-1
+        if ball.colliderect(paddle) and ball_vel[1]>0: ball_vel[1]*=-1
+
+        hit = ball.collidelist(bricks)
+        if hit != -1:
+            bricks.pop(hit)
+            ball_vel[1] *= -1
+
+        screen.fill(BG)
+        pygame.draw.rect(screen, PADDLE, paddle)
+        pygame.draw.ellipse(screen, BALL, ball)
+        for b in bricks:
+            pygame.draw.rect(screen, BRICK, b)
+        txt = font.render(f"Bricks left: {len(bricks)}", True, (255,255,255))
+        screen.blit(txt, (10,10))
+
+        if ball.bottom >= HEIGHT:
+            msg = font.render("Game Over", True, (255,50,50))
+            screen.blit(msg, msg.get_rect(center=(WIDTH//2, HEIGHT//2)))
+            pygame.display.flip(); await asyncio.sleep(2); running=False
+        elif not bricks:
+            msg = font.render("You Win!", True, (50,255,50))
+            screen.blit(msg, msg.get_rect(center=(WIDTH//2, HEIGHT//2)))
+            pygame.display.flip(); await asyncio.sleep(2); running=False
+
+        pygame.display.flip()
+        clock.tick(60)
+
+    pygame.quit()
+
+asyncio.run(main())
+  </script>
+</body>
+</html>

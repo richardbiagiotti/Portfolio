@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Friends – Richard Biagiotti</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --bg: #f4f4f4;
+      --text: #333;
+      --hero-bg: #222;
+      --hero-text: #fff;
+      --section-bg: #fff;
+    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background: var(--bg); color: var(--text); }
+    .navbar { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--hero-bg); z-index: 100; }
+    .logo { color: var(--hero-text); font-size: 1.25rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--hero-text); text-decoration: none; }
+    .nav-links a.active { text-decoration: underline; }
+    section { padding: 4rem 2rem; background: var(--section-bg); scroll-margin-top: 4rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .friends-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .friend-card { background: var(--section-bg); border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; text-decoration: none; color: inherit; }
+    .friend-card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; display: flex; align-items: center; }
+    .friend-card p.bio-content { display: none; margin-top: 1rem; color: #555; }
+    .friend-card.active { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10; }
+    .friend-card.active p.bio-content { display: block; }
+    .icon-link { display: inline-block; vertical-align: middle; margin-left: 0.5rem; }
+    .icon-link svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- SVG sprite for icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <path d="M7.75 2C5.68 2 4 3.68 4 5.75v12.5C4 20.32 5.68 22 7.75 22h8.5C18.32 22 20 20.32 20 18.25V5.75C20 3.68 18.32 2 16.25 2H7.75zM12 7a5 5 0 110 10 5 5 0 010-10zm6-1a1 1 0 110 2 1 1 0 010-2z"/><circle cx="12" cy="12" r="3"/>
+    </symbol>
+  </svg>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Richard Biagiotti</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="friends.html" class="active">Friends</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="home.html#contact">Contact</a></li>
+      
+    </ul>
+  </nav>
+
+  <!-- Friends Grid -->
+  <section class="container" style="padding-top: 6rem;">
+    <h2>Friends</h2>
+    <div class="friends-grid">
+      <div class="friend-card">
+        <h3>Marcus McDaniel
+          <a href="https://www.instagram.com/marcus_mcdaniel/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Nate Bonetto
+          <a href="https://www.instagram.com/nate_bonetto/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Owen DeMuth
+          <a href="https://www.instagram.com/o_demuth21/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Robert Bauer
+          <a href="https://www.instagram.com/robertbauer_/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Gianluca Carlini
+          <a href="https://www.instagram.com/gianluca_carlini05/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Christophe Clement
+          <a href="https://www.instagram.com/christophe.clementt/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Elias Shokry
+          <a href="https://www.instagram.com/elias.shokry/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Georgia Tech Men's Tennis</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>Guido Biagiotti
+          <a href="https://www.instagram.com/mr.beast" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Cheif</p>
+      </div>
+      
+      <div class="friend-card">
+        <h3>xx
+          <a href="https://www.instagram.com/PUT_INSTA_HERE/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content">Søsteren</p>
+      </div>
+      
+      
+      <div class="friend-card">
+        <h3> Poul
+          <a href="https://www.instagram.com/PUT_INSTA_HERE/" class="icon-link" target="_blank" rel="noopener">
+            <svg><use href="#icon-instagram"></use></svg>
+          </a>
+        </h3>
+        <p class="bio-content"> UNC </p>
+      </div>
+     
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.friend-card').forEach(card =>
+      card.addEventListener('click', () => card.classList.toggle('active'))
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Richard Biagiotti</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --bg: #f4f4f4;
+      --text: #333;
+      --hero-bg: #222;
+      --hero-text: #fff;
+      --section-bg: #fff;
+    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background: var(--bg); color: var(--text); }
+    .navbar { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--hero-bg); z-index: 100; }
+    .logo { color: var(--hero-text); font-size: 1.25rem; font-weight: bold; }
+    .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+    .nav-links a { color: var(--hero-text); text-decoration: none; }
+    .nav-links a.active { text-decoration: underline; }
+    .hero { display: flex; justify-content: center; align-items: center; height: 100vh; background: var(--hero-bg); padding-top: 4rem; }
+    .hero-content { text-align: center; color: var(--hero-text); }
+    .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.25rem; margin-bottom: 2rem; }
+    .cta-btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--primary); color: #fff; border-radius: 4px; text-decoration: none; font-size: 1rem; }
+    section { padding: 4rem 2rem; background: var(--section-bg); scroll-margin-top: 4rem; }
+    .container { max-width: 800px; margin: 0 auto; }
+    section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    section p { line-height: 1.6; margin-bottom: 1rem; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .project-card { background: var(--section-bg); border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+    .project-card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .project-card p.details-content { display: none; margin-top: 1rem; color: #555; }
+    .project-card.active { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10; }
+    .project-card.active p.details-content { display: block; }
+    .icon-link { display: inline-block; vertical-align: middle; margin-left: 0.5rem; }
+    .icon-link svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- SVG sprite for icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <path d="M7.75 2C5.68 2 4 3.68 4 5.75v12.5C4 20.32 5.68 22 7.75 22h8.5C18.32 22 20 20.32 20 18.25V5.75C20 3.68 18.32 2 16.25 2H7.75zM12 7a5 5 0 110 10 5 5 0 010-10zm6-1a1 1 0 110 2 1 1 0 010-2z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </symbol>
+  </svg>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Richard Biagiotti</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Richard Biagiotti</h1>
+      <p>Building Innovative FinTech Solutions</p>
+      <a href="#projects" class="cta-btn">See My Work</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I’m a finance student at Georgia Tech with a passion for coding, investing, and sports. Currently diving deep into computer science and data analytics, I enjoy building projects that connect tech with the real world — from stock analysis tools to sports data apps. On the court, I compete with the Georgia Tech Men’s Tennis Team, and off the court, I’m always looking for the next idea to bring to life. GO JACKETS.</p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>DraftSmart</h3>
+          <p>Fantasy football draft optimizer that analyzes player stats, projections, and team needs.</p>
+          <p class="details-content">More details about DraftSmart go here...</p>
+        </div>
+        <div class="project-card">
+          <h3>InvestSmart</h3>
+          <p>Investment analyzer offering stock insights, portfolio optimization, and risk tools.</p>
+          <p class="details-content">More details about InvestSmart go here...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games -->
+  <section id="games">
+    <div class="container">
+      <h2>Games</h2>
+      <p>Explore mini‑games and interactive experiments I’ve built in my spare time.</p>
+      <a href="games.html" class="cta-btn">Play Now</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>rbiagiotti@gatech.edu</p>
+      <p>+1 (404) 528‑6910</p>
+      <a href="https://www.instagram.com/richard_biagiotti/" class="icon-link" target="_blank" rel="noopener">
+        <svg><use href="#icon-instagram"></use></svg>
+      </a>
+      <p><a href="https://github.com/projects" target="_blank">GitHub projects</a></p>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.project-card').forEach(card =>
+      card.addEventListener('click', () => card.classList.toggle('active'))
+    );
+  </script>
+</body>
+</html>
